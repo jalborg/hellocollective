@@ -59,7 +59,7 @@
         <p id="signup-error" class="text-danger"></p>
         <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
             <input class="form-control" name="email" type="email" placeholder="Your email. eg., joe@acme.com" required>
-            <button class="btn btn-success" id="signup-button" type="submit" >Join now</button>
+            <button class="btn btn-success" id="signup-button" type="submit" style="margin:0 auto">Join now</button>
         </form>
         </div>
 </div>
@@ -85,7 +85,7 @@
     };
     function signup(formObj) {
         // Store emails to firebase
-        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com");
+        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com/signups");
         myFirebaseRef.push({
           email: formObj.email.value,
         }, onSignupComplete);
