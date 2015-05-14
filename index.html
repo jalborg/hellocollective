@@ -87,7 +87,6 @@
         // Store emails to firebase
         var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com/email2");
         myFirebaseRef.child('email').set(formObj.email.value),onSignupComplete;
-        onSignupComplete;
         signupBtn.disabled = true;
         return false;
 
