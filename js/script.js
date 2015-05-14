@@ -16,11 +16,9 @@
     };
     function sendMessage(formObj) {
         // Store emails to firebase
-        var myFirebaseRef = new Firebase("https://yourappname.firebaseio.com/messages");
+        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com");
         myFirebaseRef.push({
-          name: formObj.name.value,
-          email: formObj.email.value,
-          message: formObj.message.value
+          email: formObj.email.value
         }, onMessageComplete);
         sendBtn.disabled = true;
         return false;
