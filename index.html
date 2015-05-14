@@ -85,7 +85,7 @@
     };
     function signup(formObj) {
         // Store emails to firebase
-        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com/signups");
+        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com");
         myFirebaseRef.push({
           email: formObj.email.value,
         }, onSignupComplete);
