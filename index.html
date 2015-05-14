@@ -53,23 +53,46 @@
             <h1>Hello Collective</h1>
             <h3>Start, develop and wrap up teams effeciently</h3>
             <br>
-            <input class="form-control" name="email" type="email" placeholder="youremail@something" required>
-            <button class="btn btn-success" id="signup-button" type="submit" >Sign Up for Beta</button>
+        <div class="signup">
+        <h2 class="signup-title">Sign up for beta</h2>
+        <p id="signup-success" class="text-success"></p>
+        <p id="signup-error" class="text-danger"></p>
+        <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
+            <input class="form-control" name="email" type="email" placeholder="Your email. eg., joe@acme.com" required>
+            <button class="btn btn-success" id="signup-button" type="submit" >Join now</button>
+        </form>
         </div>
-
-    <div class="signup">
-    <p id="signup-success" class="text-success"></p>
-    <p id="signup-error" class="text-danger"></p>
-    <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
-
-    </form>
 </div>
 
     </header>
 
 
 
-   
+   <script>
+    var signupForm = document.getElementById('signup-form');
+    var signupSuccess = document.getElementById('signup-success');
+    var signupError = document.getElementById('signup-error');
+    var signupBtn = document.getElementById('signup-button');
+    var onSignupComplete = function(error) {
+      signupBtn.disabled = false;
+      if (error) {
+        signupError.innerHTML = 'Sorry. Could not signup.';
+      } else {
+        signupSuccess.innerHTML = 'Thanks for signing up!';
+        // hide the form
+        signupForm.style.display = 'none';
+      }
+    };
+    function signup(formObj) {
+        // Store emails to firebase
+        var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com");
+        myFirebaseRef.push({
+          email: formObj.email.value,
+        }, onSignupComplete);
+        signupBtn.disabled = true;
+        return false;
+    }
+</script>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
