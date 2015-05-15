@@ -87,6 +87,7 @@
         var myFirebaseRef = new Firebase("https://hello-collective.firebaseio.com/signups");
         myFirebaseRef.push({
           email: formObj.email.value,
+          time: Firebase.ServerValue.TIMESTAMP
         }, onSignupComplete);
         signupBtn.disabled = true;
         return false;
@@ -135,6 +136,8 @@
     </script>
 
     <script>
+
+    
     //GOOGLE ANALYTICS, track click event on button
 
 addListener(button, 'click', function() {
